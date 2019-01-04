@@ -1,20 +1,26 @@
 import React from "react";
 import { Row, Col, Card } from 'react-materialize';
-import avatar from '../../images/avatar.png';
-//const avatar_url = 'https://avatars1.githubusercontent.com/u/18179804?v=4';
+import { fetchAPI } from '../../hocs/fetchAPI';
+import { withLoading } from '../../hocs/withLoading';
 
-const Profile = () => (
-  <Card>
+const Profile = ({ data }) => {
+  const { avatar_url, name, professional } = data;
+  
+  return (
+    <Card>
       <Row>
         <Col s={8} m={8} offset="s2 m2">
-          <img src={avatar} className="circle responsive-img" />
+          <img src={avatar_url} className="circle responsive-img" />
         </Col>
       </Row>
       <Row className="center-align">
-        <h5 >Lorem Ipsum</h5>
-        <p className="grey darken-2 white-text">Ruby Developer</p>
+        <h5>{name}</h5>
+        <p className="grey darken-2 white-text">{professional}</p>
       </Row>
-  </Card>
-);
+    </Card>
+  )
+};
 
-export default Profile;
+const ProfileLoading = withLoading(Profile);
+
+export default fetchAPI(ProfileLoading);

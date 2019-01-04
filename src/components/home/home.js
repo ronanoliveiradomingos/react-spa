@@ -1,40 +1,27 @@
 import React from "react";
-import { Row, Col, Card } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import Profile from '../profile/profile'
+import Resume from '../resume/resume'
 import Experience from '../experience/experience'
-import company_avatar from '../../images/company.png';
-import company_avatar2 from '../../images/company2.png';
+import Academic from '../academic/academic'
+
+const infoApiURL = 'https://www.mocky.io/v2/5c2f9e563200006600590903';
 
 const Home = () => (
   <Row>
     <Col m={3} s={12}>
-      <Profile />
+      <Profile apiURL={infoApiURL}/>
     </Col>
     <Col m={8} s={12}>
-        <h5 className="subtitle">About Me</h5>
-        <Card>
-          <div>
-            <p><b>Lorem</b></p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborevoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            <br/>
-            <p><b>Ipsum</b></p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborevoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          </div>
-        </Card>
-        <h5 className="subtitle">Experiences</h5>
-   
 
-        {/* Passando os parâmetros title, company, description e avatar para o component Experience */}
-        <Experience title="Ruby Developer"
-                    company="Soundcloud"
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborevoluptate velit esse cillum dolore eu fugiat id est laborum."
-                    avatar={company_avatar}
-        />
-        <Experience title="React Developer"
-                    company="Twitter"
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborevoluptate velit esse cillum dolore eu fugiat id est laborum."
-                    avatar={company_avatar2}                    
-        /> 
+        <h5 className="subtitle">Resumo</h5>
+        <Resume apiURL={infoApiURL}/>
+
+        <h5 className="subtitle">Experiência</h5>
+        <Experience  apiURL={infoApiURL}/>  
+        
+        <h5 className="subtitle">Formação Acadêmica</h5>
+        <Academic  apiURL={infoApiURL}/>  
     </Col>
   </Row>
 );
